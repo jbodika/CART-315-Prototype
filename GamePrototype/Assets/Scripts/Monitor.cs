@@ -23,7 +23,8 @@ public class Monitor : MonoBehaviour
         Debug.Log("Monitor Clicked");
 
         // destroy monitor
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        //gameObject.SetActive(false);
 
         // show the new images
         image1.SetActive(true);

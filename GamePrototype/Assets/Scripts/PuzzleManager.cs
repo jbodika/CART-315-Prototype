@@ -6,6 +6,7 @@ public class PuzzleManager : MonoBehaviour
 
     public GameObject checkmarkImage;
     public GameObject xImage;
+    public static bool isMiniPuzzleOneComplete; 
 
     private int connectedCables = 0;
 
@@ -41,10 +42,13 @@ public class PuzzleManager : MonoBehaviour
         if (allCorrect)
         {
             checkmarkImage.SetActive(true);
+            isMiniPuzzleOneComplete = true;
+
         }
         else
         {
             xImage.SetActive(true);
+            isMiniPuzzleOneComplete = true;
         }
     }
 }
