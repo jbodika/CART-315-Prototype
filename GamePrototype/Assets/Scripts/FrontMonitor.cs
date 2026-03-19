@@ -2,23 +2,21 @@ using UnityEngine;
 
 public class FrontMonitor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject errorImage;
+
     void Start()
     {
-        
+        errorImage.SetActive(false); // hide at start
     }
 
-    void onMouseDown()
+    void OnMouseDown()
     {
-        //if (!isMiniPuzzleOneComplete)
-        //{
-           
-        //}
+        errorImage.SetActive(true);
+        Invoke(nameof(HideImage), 2.0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void HideImage()
     {
-        
+        errorImage.SetActive(false);
     }
 }

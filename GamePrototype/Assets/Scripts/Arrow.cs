@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
     public GameObject monitorFront;
 
     private bool isFrontActive = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         monitorFront.SetActive(false);
