@@ -6,7 +6,9 @@ public class Cable : MonoBehaviour
 {
     private Vector3 offset;
     private bool dragging = false;
-
+    private Vector3 startPosition;
+    private Sprite originalSprite;
+    private Socket currentSocket;
     public string correctSocket;
     public string connectedSocket;
 
@@ -16,6 +18,8 @@ public class Cable : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        startPosition = transform.position;
+        originalSprite = spriteRenderer.sprite;
     }
 
     void OnMouseDown()
@@ -39,27 +43,46 @@ public class Cable : MonoBehaviour
     void OnMouseUp()
     {
         dragging = false;
+
+        if (currentSocket != null && !currentSocket.occupied)
+        {
+            transform.position = currentSocket.transform.position;
+
+            connectedSocket = currentSocket.name;
+
+            currentSocket.occupied = true;
+
+            enabled = false;
+
+            FindObjectOfType<PuzzleManager>().CableConnected();
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void ResetCable()
+    {
+        transform.position = startPosition;
+
+        connectedSocket = null;
+
+        spriteRenderer.sprite = originalSprite;
+
+        enabled = true; // allow dragging again
+    }
+
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Socket"))
         {
-            Socket socket = other.GetComponent<Socket>();
-
-            if (!socket.occupied)
-            {
-                transform.position = other.transform.position;
-
-                connectedSocket = other.name;
-                socket.occupied = true;
-
-                dragging = false;
-                enabled = false;
-
-                FindObjectOfType<PuzzleManager>().CableConnected();
-            }
+            currentSocket = other.GetComponent<Socket>();
         }
     }
-  
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Socket"))
+        {
+            currentSocket = null;
+        }
+    }
+
 }

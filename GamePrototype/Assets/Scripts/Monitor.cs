@@ -9,6 +9,7 @@ public class Monitor : MonoBehaviour
     public GameObject image2;
     public GameObject image3;
     public GameObject image4;
+    public GameObject arrow;
 
     void Start()
     {
@@ -23,9 +24,9 @@ public class Monitor : MonoBehaviour
         Debug.Log("Monitor Clicked");
 
         // destroy monitor
-        // Destroy(gameObject);
+         Destroy(gameObject);
         //gameObject.SetActive(false);
-
+        arrow.SetActive(false);
         // show the new images
         image1.SetActive(true);
         image2.SetActive(true);
