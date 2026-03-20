@@ -6,6 +6,8 @@ public class PuzzleManager : MonoBehaviour
     public Cable[] cables;
     public Socket[] sockets;
 
+    public AudioSource soundCorrect;
+    public AudioSource soundWrong;
     public GameObject checkmarkImage;
     public GameObject xImage;
 
@@ -46,11 +48,13 @@ public class PuzzleManager : MonoBehaviour
         {
             checkmarkImage.SetActive(true);
             isMiniPuzzleOneComplete = true;
+            soundCorrect.Play();
         }
         else
         {
             xImage.SetActive(true);
             StartCoroutine(ResetPuzzle()); // 
+            soundWrong.Play();
         }
     }
 

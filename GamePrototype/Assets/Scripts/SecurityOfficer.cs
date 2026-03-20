@@ -6,7 +6,8 @@ public class SecurityOfficer : MonoBehaviour
     public GameObject hidingScreen;
     public AudioSource footsteps;
     public AudioSource doorOpen;
-    public AudioSource doorClose;
+    public AudioSource doorClose; 
+	public AudioSource storm;
 
     private float stepsTimer;
     private float doorTimer;
@@ -28,6 +29,7 @@ public class SecurityOfficer : MonoBehaviour
     {
         hidingScreen.SetActive(false);
         StartPatrol();
+		storm.Play();
     }
 
     void StartPatrol()

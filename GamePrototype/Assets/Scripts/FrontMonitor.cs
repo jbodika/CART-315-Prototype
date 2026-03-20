@@ -4,7 +4,7 @@ public class FrontMonitor : MonoBehaviour
 {
     public GameObject errorImage;
 
-    void Start()
+    void Awake()
     {
         errorImage.SetActive(false); // hide at start
     }
