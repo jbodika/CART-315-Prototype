@@ -43,24 +43,19 @@ public class SecurityOfficer : MonoBehaviour
     
     void Update()
     {
-        if (WalkingInEvent)
+       
+           if (Input.GetKeyDown(KeyCode.H))
         {
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                hiding = true;
-                hidingScreen.SetActive(true);
-            }
-            
-            if (Input.GetKeyUp(KeyCode.H))
-            {
-                hiding = false;
-                hidingScreen.SetActive(false);
-                if (WalkingInEventStarted || WalkingOutEventDone)
-                {
-                    SceneManager.LoadScene("GameOver");
-                }
-            }
+            hiding = true;
+            hidingScreen.SetActive(true);
         }
+        if (Input.GetKeyUp(KeyCode.H)) 
+        {
+            hiding = false;
+            hidingScreen.SetActive(false);
+        }
+
+       
         if (delayTimerStarted)
         {
             delayTimer -= Time.deltaTime;
@@ -77,6 +72,13 @@ public class SecurityOfficer : MonoBehaviour
         if (WalkingInEventStarted)
         {
             doorTimer -= Time.deltaTime;
+
+			if (!hiding)
+			{
+				SceneManager.LoadScene("GameOver");
+            	return; 
+			}
+
             if (doorTimer <= 0)
             {
                 WalkingInEventStarted = false;
@@ -92,7 +94,6 @@ public class SecurityOfficer : MonoBehaviour
             {
                 WalkingOutEventDone = false;
                 WalkingInEvent = false;
-                hidingScreen.SetActive(false);
                 StartPatrol();
             }
         }
@@ -108,6 +109,8 @@ public class SecurityOfficer : MonoBehaviour
         }
         
     }
+
+
     void WalkingIn()
     {
         Debug.Log("WalkingIn called");
