@@ -22,7 +22,6 @@ public class Monitor : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Monitor Clicked");
-
         // destroy monitor
          Destroy(gameObject);
         //gameObject.SetActive(false);

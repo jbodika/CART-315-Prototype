@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f4b15d1ffaad0014598cafc635da1a4a
+guid: 5b2a4367798ce544685231abdfede6c8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3175893317170485651
-    second: closeup_orange_0
+      213: -2907863937180988101
+    second: closeup_purpppp-pixilart (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: closeup_orange_0
+      name: closeup_purpppp-pixilart (1)_0
       rect:
         serializedVersion: 2
-        x: 147
+        x: 219
         y: 0
-        width: 62
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 103
+        height: 500
+      alignment: 9
+      pivot: {x: 0.49162397, y: 0.93788826}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d662489cad5fce3d0800000000000000
-      internalID: -3175893317170485651
+      spriteID: b3d8829d72135a7d0800000000000000
+      internalID: -2907863937180988101
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: adbb023b081ce58419b10e005dab2f28
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      closeup_orange_0: -3175893317170485651
+      closeup_purpppp-pixilart (1)_0: -2907863937180988101
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

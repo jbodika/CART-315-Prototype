@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9f3ed1f3d6efc38499fd92e7e598e6d6
+guid: 0a601c5dadfb7aa4e9fcc0297f80ef77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6864705659591406222
-    second: monitor_0
+      213: -9066775792541428816
+    second: closeup_purple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monitor_0
+      name: closeup_purple_0
       rect:
         serializedVersion: 2
-        x: 206
-        y: 158
-        width: 602
-        height: 758
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 219
+        y: 0
+        width: 103
+        height: 500
+      alignment: 9
+      pivot: {x: 0.49162397, y: 0.88474804}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e823f873d65544f50800000000000000
-      internalID: 6864705659591406222
+      spriteID: 0b3157b54775c2280800000000000000
+      internalID: -9066775792541428816
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 061061e06a00ce84eb6ea6e28bf804fa
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      monitor_0: 6864705659591406222
+      closeup_purple_0: -9066775792541428816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

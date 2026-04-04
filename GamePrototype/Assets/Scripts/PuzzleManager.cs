@@ -5,15 +5,11 @@ public class PuzzleManager : MonoBehaviour
 {
     public Cable[] cables;
     public Socket[] sockets;
-
     public AudioSource soundCorrect;
     public AudioSource soundWrong;
     public GameObject checkmarkImage;
     public GameObject xImage;
-
     public static bool isMiniPuzzleOneComplete;
-
-    private int connectedCables = 0;
 
     void Start()
     {
@@ -23,9 +19,16 @@ public class PuzzleManager : MonoBehaviour
 
     public void CableConnected()
     {
-        connectedCables++;
+        // counts how many cables are currently connected
+        int connectedCount = 0;
+        foreach (Cable c in cables)
+        {
+            if (!string.IsNullOrEmpty(c.connectedSocket))
+                connectedCount++;
+        }
 
-        if (connectedCables == cables.Length)
+        //checks if all cables are connected
+        if (connectedCount == cables.Length)
         {
             CheckPuzzle();
         }
@@ -37,6 +40,7 @@ public class PuzzleManager : MonoBehaviour
 
         foreach (Cable c in cables)
         {
+            Debug.Log(c);
             if (c.connectedSocket != c.correctSocket)
             {
                 allCorrect = false;
@@ -53,29 +57,19 @@ public class PuzzleManager : MonoBehaviour
         else
         {
             xImage.SetActive(true);
-            StartCoroutine(ResetPuzzle()); // 
             soundWrong.Play();
+            StartCoroutine(ResetPuzzle());
         }
     }
 
     IEnumerator ResetPuzzle()
     {
-        yield return new WaitForSeconds(2f); // wait 2 seconds
-
+        yield return new WaitForSeconds(2f);
         xImage.SetActive(false);
 
-        // reset cables
         foreach (Cable c in cables)
-        {
-            c.ResetCable();
-        }
+            c.ResetCable(); // resets the cables and sockets
 
-        // reset sockets
-        foreach (Socket s in sockets)
-        {
-            s.occupied = false;
-        }
-
-        connectedCables = 0;
+        isMiniPuzzleOneComplete = false;
     }
 }

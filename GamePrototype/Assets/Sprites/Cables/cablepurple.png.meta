@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 82ffa0000db5866459fe621b16a88da0
+guid: dcd37fea5e5cfb04482cf2c55be7b2d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1135662498725590402
-    second: closeup_red_0
+      213: -8832706123532252331
+    second: cablewhite-pixilart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: closeup_red_0
+      name: cablewhite-pixilart_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 0
-        width: 62
-        height: 186
+        x: 71
+        y: 63
+        width: 205
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 8, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e7a8ab279f05d30f0800000000000000
-      internalID: -1135662498725590402
+      spriteID: 55b417d049ceb6580800000000000000
+      internalID: -8832706123532252331
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6836bc4c00c21b044a724bc608d5a2fb
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      closeup_red_0: -1135662498725590402
+      cablewhite-pixilart_0: -8832706123532252331
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

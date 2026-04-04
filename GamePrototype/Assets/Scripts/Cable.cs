@@ -11,7 +11,7 @@ public class Cable : MonoBehaviour
     private Socket currentSocket;
     public string correctSocket;
     public string connectedSocket;
-
+    public Transform snapPoint;
     public Sprite pickedUpImage;
     private SpriteRenderer spriteRenderer;
 
@@ -25,9 +25,9 @@ public class Cable : MonoBehaviour
     void OnMouseDown()
     {
         dragging = true;
-        spriteRenderer.sprite = pickedUpImage;
-
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        spriteRenderer.sprite = pickedUpImage;
+     
     }
 
     void OnMouseDrag()
@@ -43,30 +43,39 @@ public class Cable : MonoBehaviour
     void OnMouseUp()
     {
         dragging = false;
-
         if (currentSocket != null && !currentSocket.occupied)
         {
             transform.position = currentSocket.transform.position;
-
             connectedSocket = currentSocket.name;
-
             currentSocket.occupied = true;
-
             enabled = false;
-
             FindObjectOfType<PuzzleManager>().CableConnected();
         }
+        else
+        {
+            // Reverts the sprite to original
+            spriteRenderer.sprite = originalSprite;
+        }
     }
-
     public void ResetCable()
     {
+        // Gets the cable that the socket was connected to and resets it
+        if (!string.IsNullOrEmpty(connectedSocket))
+        {
+            foreach (Socket s in FindObjectsOfType<Socket>())
+            {
+                if (s.name == connectedSocket)
+                {
+                    s.occupied = false;
+                    break;
+                }
+            }
+        }
+
         transform.position = startPosition;
-
         connectedSocket = null;
-
         spriteRenderer.sprite = originalSprite;
-
-        enabled = true; // allow dragging again
+        enabled = true;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -84,5 +93,4 @@ public class Cable : MonoBehaviour
             currentSocket = null;
         }
     }
-
 }
