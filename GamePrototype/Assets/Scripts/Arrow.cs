@@ -4,6 +4,7 @@ public class Arrow : MonoBehaviour
 {
     public GameObject monitorBack;
     public GameObject monitorFront;
+    private AudioSource sound;
 
     private bool isFrontActive = false;
 
@@ -11,6 +12,7 @@ public class Arrow : MonoBehaviour
     {
         monitorFront.SetActive(false);
         monitorBack.SetActive(true);
+        sound = GetComponent<AudioSource>();
 
 
     }
@@ -23,7 +25,7 @@ public class Arrow : MonoBehaviour
       
 
         Debug.Log("Arrow Clicked");
-
+        sound.Play();
 
 
 

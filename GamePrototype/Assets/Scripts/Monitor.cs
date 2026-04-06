@@ -10,9 +10,11 @@ public class Monitor : MonoBehaviour
     public GameObject image3;
     public GameObject image4;
     public GameObject arrow;
+    public static bool isActivated = false;
 
     void Start()
     {
+        isActivated = false;
         image1.SetActive(false);
         image2.SetActive(false);
         image3.SetActive(false);
@@ -22,6 +24,7 @@ public class Monitor : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Monitor Clicked");
+        isActivated = true;
         // destroy monitor
          Destroy(gameObject);
         //gameObject.SetActive(false);
