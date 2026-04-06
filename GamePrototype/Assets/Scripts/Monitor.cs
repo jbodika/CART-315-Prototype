@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Monitor : MonoBehaviour
 {
-    public GameObject image1;
-    public GameObject image2;
-    public GameObject image3;
-    public GameObject image4;
+    //public GameObject image1;
+    //public GameObject image2;
+    //public GameObject image3;
+    //public GameObject image4;
     public GameObject arrow;
     public static bool isActivated = false;
 
     void Start()
     {
         isActivated = false;
-        image1.SetActive(false);
-        image2.SetActive(false);
-        image3.SetActive(false);
-        image4.SetActive(false);
+        //image1.SetActive(false);
+        //image2.SetActive(false);
+        //image3.SetActive(false);
+        //image4.SetActive(false);
     }
 
     void OnMouseDown()
@@ -26,14 +26,14 @@ public class Monitor : MonoBehaviour
         Debug.Log("Monitor Clicked");
         isActivated = true;
         // destroy monitor
-         Destroy(gameObject);
+        // Destroy(gameObject);
         //gameObject.SetActive(false);
         arrow.SetActive(false);
         // show the new images
-        image1.SetActive(true);
-        image2.SetActive(true);
-        image3.SetActive(true);
-        image4.SetActive(true);
+        //image1.SetActive(true);
+        //image2.SetActive(true);
+        //image3.SetActive(true);
+        //image4.SetActive(true);
     }
 
 
