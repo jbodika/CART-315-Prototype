@@ -32,22 +32,26 @@ public class CableBox : MonoBehaviour
 
     void OnMouseDown()
     {
+       
         // Box clicked before monitor
         if (!Monitor.isActivated)
         {
+            Debug.Log("Clicked");
             if (errorMessage != null)
                 StartCoroutine(ShowError());
             return;
+           
+        
         }
 
         // Monitor was clicked first 
         if (!isOpen)
-        {
-            isOpen = true;
+        { isOpen = true;
             spriteRenderer.sprite = openImage;
             sound.Play();
 
             StartCoroutine(DisplayAndHideAssets());
+       
 
         }
     }

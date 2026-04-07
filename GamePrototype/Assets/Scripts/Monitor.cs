@@ -24,9 +24,12 @@ public class Monitor : MonoBehaviour
     void OnMouseDown()
     {
         Debug.Log("Monitor Clicked");
+        Debug.Log("Are you even workingggg ");
+
         isActivated = true;
-        // destroy monitor
+        //hide monitor
         // Destroy(gameObject);
+        gameObject.SetActive(false);
         //gameObject.SetActive(false);
         arrow.SetActive(false);
         // show the new images

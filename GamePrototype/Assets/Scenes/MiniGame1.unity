@@ -2937,12 +2937,12 @@ MonoBehaviour:
   - {fileID: 2064933614}
   - {fileID: 175593920}
   - {fileID: 687540903}
-  - {fileID: 1388654438}
   errorMessage: {fileID: 1197244922}
   hiddenDecorativeAssets:
   - {fileID: 49419621}
   - {fileID: 280764020}
   - {fileID: 1465130545}
+  - {fileID: 1388654438}
 --- !u!61 &1465130550
 BoxCollider2D:
   m_ObjectHideFlags: 0
