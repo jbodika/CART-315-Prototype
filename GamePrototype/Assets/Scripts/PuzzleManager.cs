@@ -4,17 +4,21 @@ using System.Collections;
 public class PuzzleManager : MonoBehaviour
 {
     public Cable[] cables;
-    public Socket[] sockets;
+    //public Socket[] sockets;
     public AudioSource soundCorrect;
     public AudioSource soundWrong;
     public GameObject checkmarkImage;
     public GameObject xImage;
     public static bool isMiniPuzzleOneComplete;
 
+
+
+
     void Start()
     {
         checkmarkImage.SetActive(false);
         xImage.SetActive(false);
+      
     }
 
     public void CableConnected()
@@ -72,4 +76,6 @@ public class PuzzleManager : MonoBehaviour
 
         isMiniPuzzleOneComplete = false;
     }
+
+  
 }

@@ -9,14 +9,22 @@ public class CableBox : MonoBehaviour
     public GameObject errorMessage;    
     private SpriteRenderer spriteRenderer;
     private bool isOpen = false;
+    private AudioSource sound;
+    public GameObject[] hiddenDecorativeAssets;
+   // public GameObject[] shownDecorativeAssets;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        sound = GetComponent<AudioSource>();
         // Hide cables at start
         foreach (GameObject obj in puzzleObjects)
             obj.SetActive(false);
+
+     //   StartCoroutine(DisplayAndHideAssets());
+        //foreach (GameObject obj in shownDecorativeAssets)
+        //    obj.SetActive(false);
+        //StartCoroutine(DisplayAssets());
 
         if (errorMessage != null)
             errorMessage.SetActive(false);
@@ -37,9 +45,10 @@ public class CableBox : MonoBehaviour
         {
             isOpen = true;
             spriteRenderer.sprite = openImage;
+            sound.Play();
 
-            foreach (GameObject obj in puzzleObjects)
-                obj.SetActive(true);
+            StartCoroutine(DisplayAndHideAssets());
+
         }
     }
 
@@ -49,4 +58,20 @@ public class CableBox : MonoBehaviour
         yield return new WaitForSeconds(2f);
         errorMessage.SetActive(false);
     }
+    IEnumerator DisplayAndHideAssets()
+    {
+        yield return new WaitForSeconds(2f);
+        // xImage.SetActive(false);
+
+
+        foreach (GameObject obj in hiddenDecorativeAssets)
+            obj.SetActive(false);
+
+        //foreach (GameObject obj in shownDecorativeAssets)
+        //    obj.SetActive(true);
+
+        foreach (GameObject obj in puzzleObjects)
+            obj.SetActive(true);
+    }
+
 }

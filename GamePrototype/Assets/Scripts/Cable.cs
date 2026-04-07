@@ -14,6 +14,7 @@ public class Cable : MonoBehaviour
     public Transform snapPoint;
     public Sprite pickedUpImage;
     private SpriteRenderer spriteRenderer;
+   // public GameObject[] decorativeAssets;
 
     void Start()
     {
@@ -93,4 +94,6 @@ public class Cable : MonoBehaviour
             currentSocket = null;
         }
     }
+
+
 }
