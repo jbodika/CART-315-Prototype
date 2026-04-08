@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,3 +31,4 @@ public class BreakoutPaddle : MonoBehaviour {
         transform.localPosition = new Vector3(xPos, transform.position.y, 0);
     }
 }
+

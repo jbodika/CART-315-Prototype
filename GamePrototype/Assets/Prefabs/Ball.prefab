@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 478884463459387723}
   - component: {fileID: 2713760885478853160}
   - component: {fileID: 2048944994383883082}
-  - component: {fileID: 2894649852181387507}
-  - component: {fileID: -5174400845448815548}
-  - component: {fileID: -7765091373220154926}
+  - component: {fileID: 3921789897267262349}
+  - component: {fileID: 909466138558792656}
+  - component: {fileID: 6971674977799309463}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -159,7 +159,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.375
---- !u!114 &2894649852181387507
+--- !u!114 &3921789897267262349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,17 +168,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8463089928145992685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52947a0118d4f4d4ca7cadccd4fd073b, type: 3}
+  m_Script: {fileID: 11500000, guid: eb9bdb098432a4836a3929120521cb50, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakoutBall
+  m_EditorClassIdentifier: 
   ballSpeed: 0
   maxSpeed: 10
   minSpeed: 2
-  scoreSound: {fileID: -5174400845448815548}
-  blip: {fileID: -7765091373220154926}
+  scoreSound: {fileID: 6971674977799309463}
+  blip: {fileID: 909466138558792656}
   dead: {fileID: 0}
   prefabBall: {fileID: 0}
---- !u!82 &-5174400845448815548
+--- !u!82 &909466138558792656
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +189,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5be80a2989e8a4e4da294493a36d3162, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5b164fe702efb45eab1f74573d8bcd35, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -275,7 +275,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &-7765091373220154926
+--- !u!82 &6971674977799309463
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,7 +286,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5b164fe702efb45eab1f74573d8bcd35, type: 3}
+  m_Resource: {fileID: 8300000, guid: 5be80a2989e8a4e4da294493a36d3162, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
