@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PuzzleManager : MonoBehaviour
 {
     public Cable[] cables;
-    //public Socket[] sockets;
     public AudioSource soundCorrect;
     public AudioSource soundWrong;
     public GameObject checkmarkImage;
     public GameObject xImage;
     public static bool isMiniPuzzleOneComplete;
-
-
 
 
     void Start()
@@ -57,6 +56,8 @@ public class PuzzleManager : MonoBehaviour
             checkmarkImage.SetActive(true);
             isMiniPuzzleOneComplete = true;
             soundCorrect.Play();
+
+            StartCoroutine(SwitchScenes());
         }
         else
         {
@@ -65,6 +66,15 @@ public class PuzzleManager : MonoBehaviour
             StartCoroutine(ResetPuzzle());
         }
     }
+
+    IEnumerator SwitchScenes()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("TransitionToGame2");
+
+    
+    }
+
 
     IEnumerator ResetPuzzle()
     {

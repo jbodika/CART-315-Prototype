@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SecurityOfficer : MonoBehaviour
 {
+    public static SecurityOfficer instance;
     public GameObject hidingScreen;
     public AudioSource footsteps;
     public AudioSource doorOpen;
@@ -18,13 +19,33 @@ public class SecurityOfficer : MonoBehaviour
     private bool WalkingOutEventDone = false;
     private bool WalkingInEventStarted = false;
     private bool gracePeriodActive = false;
-    
-    
+
+    private bool isTransitioning = false;
+
     void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        isTransitioning = false;
+    }
+
+
+
     void Start()
     {
         hidingScreen.SetActive(false);
@@ -35,15 +56,15 @@ public class SecurityOfficer : MonoBehaviour
     void StartPatrol()
     {
         footsteps.time = Random.Range(0f, footsteps.clip.length);
-        footsteps.Play(); 
-        
+        footsteps.Play();
+
         stepsTimer = Random.Range(12f, 18f);
-        
+
     }
     
     void Update()
     {
-
+        if (isTransitioning) return;
         hidingScreen.SetActive(Input.GetKey(KeyCode.H));
 
         if (gracePeriodActive)
