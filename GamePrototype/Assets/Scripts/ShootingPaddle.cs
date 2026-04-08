@@ -7,6 +7,7 @@ public class ShootingPaddle : MonoBehaviour {
     public GameObject shotLocation;
 
     public bool Shoot = false;
+    public AudioSource  scoreSound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -22,6 +23,8 @@ public class ShootingPaddle : MonoBehaviour {
     
 
     public void Fire() {
+        scoreSound.Play();
+        
         GameObject go = Instantiate<GameObject>(shot);
         go.transform.position = shotLocation.transform.position;
         // go.transform.position = new Vector3(transform.position.x, 

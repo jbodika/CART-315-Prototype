@@ -85,6 +85,7 @@ public class BreakoutBall : MonoBehaviour
         
         // did we hit a Brick
         if (other.gameObject.tag == "Brick") {
+Debug.Log("HIT BRICK!");
             int r = Random.Range(10, 20);
             //GameManager.S.lives -= 1;
             GameManager.S.AddPoint(r);
