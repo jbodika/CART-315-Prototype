@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -57,6 +59,8 @@ public class PuzzleManager : MonoBehaviour
             checkmarkImage.SetActive(true);
             isMiniPuzzleOneComplete = true;
             soundCorrect.Play();
+
+            StartCoroutine(SwitchScenes());
         }
         else
         {
@@ -65,6 +69,16 @@ public class PuzzleManager : MonoBehaviour
             StartCoroutine(ResetPuzzle());
         }
     }
+
+    IEnumerator SwitchScenes()
+    {
+        Debug.Log("Should transition now");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("TransitionToGame2");
+
+    
+    }
+
 
     IEnumerator ResetPuzzle()
     {

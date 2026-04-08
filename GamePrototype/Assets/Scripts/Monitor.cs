@@ -11,10 +11,19 @@ public class Monitor : MonoBehaviour
     //public GameObject image4;
     public GameObject arrow;
     public static bool isActivated = false;
+    private SpriteRenderer spriteRenderer;
+  //  private Sprite originalSprite;
+    public Sprite completedImage;
+
+
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         isActivated = false;
+       // originalSprite = spriteRenderer.sprite;
+        ChangeImage();
         //image1.SetActive(false);
         //image2.SetActive(false);
         //image3.SetActive(false);
@@ -39,6 +48,18 @@ public class Monitor : MonoBehaviour
         //image4.SetActive(true);
     }
 
+
+    void ChangeImage()
+    {
+        if (PuzzleManager.isMiniPuzzleOneComplete)
+        {
+           spriteRenderer.sprite = completedImage;
+            isActivated = false;
+
+        }
+
+
+    }
 
     // click on monitor function 
 
