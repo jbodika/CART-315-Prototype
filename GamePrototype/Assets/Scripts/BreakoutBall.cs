@@ -89,6 +89,8 @@ public class BreakoutBall : MonoBehaviour
             //GameManager.S.lives -= 1;
             GameManager.S.AddPoint(r);
 
+			scoreSound.Play();
+
 			BrickScript isBrick = other.gameObject.GetComponent<BrickScript>();
 
 			if (isBrick != null && isBrick.Special) {
