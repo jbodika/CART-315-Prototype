@@ -28,7 +28,18 @@ public class Cable : MonoBehaviour
         dragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteRenderer.sprite = pickedUpImage;
-     
+        if (!string.IsNullOrEmpty(connectedSocket))
+        {
+            foreach (Socket s in FindObjectsOfType<Socket>())
+            {
+                if (s.name == connectedSocket)
+                {
+                    s.occupied = false;
+                    break;
+                }
+            }
+            connectedSocket = null;
+        }
     }
 
     void OnMouseDrag()

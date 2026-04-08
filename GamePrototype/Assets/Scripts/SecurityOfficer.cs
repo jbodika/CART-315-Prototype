@@ -12,12 +12,12 @@ public class SecurityOfficer : MonoBehaviour
     private float stepsTimer;
     private float doorTimer;
     private float afterDoorCloseTimer;
-    private float delayTimer;
+    private float graceTimer;
+
     private bool WalkingInEvent = false;
     private bool WalkingOutEventDone = false;
     private bool WalkingInEventStarted = false;
-    private bool delayTimerStarted = false;
-    private bool hiding = false;
+    private bool gracePeriodActive = false;
     
     
     void Awake()
@@ -43,41 +43,32 @@ public class SecurityOfficer : MonoBehaviour
     
     void Update()
     {
-       
-           if (Input.GetKeyDown(KeyCode.H))
-        {
-            hiding = true;
-            hidingScreen.SetActive(true);
-        }
-        if (Input.GetKeyUp(KeyCode.H)) 
-        {
-            hiding = false;
-            hidingScreen.SetActive(false);
-        }
 
-       
-        if (delayTimerStarted)
+        hidingScreen.SetActive(Input.GetKey(KeyCode.H));
+
+        if (gracePeriodActive)
         {
-            delayTimer -= Time.deltaTime;
-            if (delayTimer <= 0)
+            graceTimer -= Time.deltaTime;
+            if (graceTimer <= 0)
             {
-                delayTimerStarted = false;
-                Debug.Log("Grace period ended, hiding = " + hiding);
-                if (!hiding)
+                gracePeriodActive = false;
+                if (!Input.GetKey(KeyCode.H))
                 {
                     SceneManager.LoadScene("GameOver");
+                    return;
                 }
+                WalkingInEventStarted = true; // checks after grace period
             }
         }
         if (WalkingInEventStarted)
         {
             doorTimer -= Time.deltaTime;
 
-			if (!hiding)
-			{
-				SceneManager.LoadScene("GameOver");
-            	return; 
-			}
+            if (!Input.GetKey(KeyCode.H))  // caught every frame they aren't holding H
+            {
+                SceneManager.LoadScene("GameOver");
+                return;
+            }
 
             if (doorTimer <= 0)
             {
@@ -87,6 +78,7 @@ public class SecurityOfficer : MonoBehaviour
                 WalkingOutEventDone = true;
             }
         }
+
         if (WalkingOutEventDone)
         {
             afterDoorCloseTimer -= Time.deltaTime;
@@ -117,9 +109,9 @@ public class SecurityOfficer : MonoBehaviour
         Debug.Log(doorOpen.clip);
         doorOpen.Play();
         doorTimer = 7f;
-        WalkingInEventStarted = true;
-        delayTimer = 2f;
-        delayTimerStarted = true;
+  
+        graceTimer = 2f;
+        gracePeriodActive = true;
 
     }
     
