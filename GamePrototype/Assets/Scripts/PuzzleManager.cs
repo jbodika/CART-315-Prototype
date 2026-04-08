@@ -6,14 +6,11 @@ using UnityEngine.SceneManagement;
 public class PuzzleManager : MonoBehaviour
 {
     public Cable[] cables;
-    //public Socket[] sockets;
     public AudioSource soundCorrect;
     public AudioSource soundWrong;
     public GameObject checkmarkImage;
     public GameObject xImage;
     public static bool isMiniPuzzleOneComplete;
-
-
 
 
     void Start()
@@ -72,7 +69,6 @@ public class PuzzleManager : MonoBehaviour
 
     IEnumerator SwitchScenes()
     {
-        Debug.Log("Should transition now");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TransitionToGame2");
 
