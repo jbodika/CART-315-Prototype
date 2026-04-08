@@ -9,7 +9,6 @@ public class BrickLayerManager: MonoBehaviour {
 
     public float brickSpacing_h;
     public float brickSpacing_v;
-    public float scale;
    
 
     
@@ -20,8 +19,8 @@ public class BrickLayerManager: MonoBehaviour {
 
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < rows; j++) {
-                float xPos = ((-columns + (i * brickSpacing_h))*scale)-1.2f;
-                float yPos = ((rows - (j * brickSpacing_v))*scale)+1.2f;
+                float xPos = -columns + (i * brickSpacing_h);
+                float yPos = rows - (j * brickSpacing_v);
                 GameObject BrickX = Instantiate(brick, new Vector3(xPos, yPos, 0), transform.rotation);
 
 				if (count == Index){
