@@ -25,7 +25,7 @@ public class BreakoutBall : MonoBehaviour
     void Start() {
         rb = GetComponent<Rigidbody2D>();
 		Message.SetActive(true); 
-		Invoke(nameof(HideMessage), 2.0f);
+		Invoke(nameof(HideMessage), 3.0f);
 
         Reset(); 
     }

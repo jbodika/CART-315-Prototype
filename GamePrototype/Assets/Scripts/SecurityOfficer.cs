@@ -9,6 +9,7 @@ public class SecurityOfficer : MonoBehaviour
     public AudioSource doorOpen;
     public AudioSource doorClose; 
 	public AudioSource storm;
+	public GameObject hideMessage;
 
     private float stepsTimer;
     private float doorTimer;
@@ -21,8 +22,11 @@ public class SecurityOfficer : MonoBehaviour
     private bool gracePeriodActive = false;
 
     private bool isTransitioning = false;
-    
+   
 
+void HideMessage() { 
+    hideMessage.SetActive(false);
+}
     void Awake()
     {
         if (instance != null && instance != this)
@@ -52,6 +56,10 @@ public class SecurityOfficer : MonoBehaviour
         hidingScreen.SetActive(false);
         StartPatrol();
 		storm.Play();
+
+		hideMessage.SetActive(true); 
+		Invoke(nameof(HideMessage), 3.0f);
+         
     }
 
     void StartPatrol()

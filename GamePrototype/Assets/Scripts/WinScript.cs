@@ -8,7 +8,8 @@ public class WinScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FindObjectOfType<SecurityOfficer>().enabled = false;
+		SecurityOfficer officer = FindFirstObjectByType<SecurityOfficer>();
+        if (officer != null) Destroy(officer.gameObject);
 
         Hooray.Play();
     }

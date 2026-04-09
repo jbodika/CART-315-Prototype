@@ -320,7 +320,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5be80a2989e8a4e4da294493a36d3162, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -713,7 +713,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b164fe702efb45eab1f74573d8bcd35, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1382,7 +1382,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b164fe702efb45eab1f74573d8bcd35, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1842,6 +1842,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 909466138558792656, guid: d707d6a291ce74f5da47bad1dfe6dcfb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 909466138558792656, guid: d707d6a291ce74f5da47bad1dfe6dcfb, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -1900,6 +1904,10 @@ PrefabInstance:
     - target: {fileID: 5662984844700689532, guid: d707d6a291ce74f5da47bad1dfe6dcfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6971674977799309463, guid: d707d6a291ce74f5da47bad1dfe6dcfb, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6971674977799309463, guid: d707d6a291ce74f5da47bad1dfe6dcfb, type: 3}
       propertyPath: m_PlayOnAwake

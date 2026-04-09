@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public Image heartImage;
     
-	public bool noBrick = false;
+	public bool noBrick;
 
     public static GameManager S;
     
@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         lives = 5;
+		noBrick = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!noBrick && GameObject.FindGameObjectsWithTag("Brick").Length == 0) {
+        if (!noBrick && GameObject.FindGameObjectsWithTag("Brick").Length == 0 && SceneManager.GetActiveScene().name == "MiniGame2") {
             noBrick = true;
             SceneManager.LoadScene("EndScreen");
 }
@@ -57,12 +58,12 @@ public class GameManager : MonoBehaviour {
         points += numPoints;
     }
 
-    public void GameOver() {
+   public void GameOver() {
         if (points > highScore) {
             highScore = points;
         }
         
-        SceneManager.LoadScene("GameOver");
+       
 
     }
 }
