@@ -13,32 +13,27 @@ public class Monitor : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         isActivated = false;
-        ChangeImage();
+        if (PuzzleManager.isMiniPuzzleOneComplete)
+        {
+            spriteRenderer.sprite = completedImage;
+            isActivated = false;
+        }
     }
 
     void OnMouseDown()
     {
 
-        isActivated = true;
-        gameObject.SetActive(false);
-        arrow.SetActive(false);
-
-    }
-
-
-    void ChangeImage()
-    {
-        if (PuzzleManager.isMiniPuzzleOneComplete)
+        if (SceneManager.GetSceneByName("MiniGame1").IsValid())
         {
-           spriteRenderer.sprite = completedImage;
-            isActivated = false;
-
+            isActivated = true;
+            gameObject.SetActive(false);
+            arrow.SetActive(false); 
         }
 
-
+      
     }
+
 
 
 }
