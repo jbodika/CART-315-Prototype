@@ -21,6 +21,7 @@ public class SecurityOfficer : MonoBehaviour
     private bool gracePeriodActive = false;
 
     private bool isTransitioning = false;
+    
 
     void Awake()
     {

@@ -11,6 +11,8 @@ public class BreakoutBall : MonoBehaviour
     public float maxSpeed = 10f;
     public float minSpeed = 2f;
 
+	public GameObject Message;
+
     public AudioSource scoreSound, blip, dead;
     public GameObject prefabBall;
     
@@ -22,10 +24,18 @@ public class BreakoutBall : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+		Message.SetActive(true); 
+		Invoke(nameof(HideMessage), 2.0f);
+
         Reset(); 
     }
+
+void HideMessage() { 
+    Message.SetActive(false);
+}
     
     void Update() {
+
         if (Input.GetKeyDown(KeyCode.Space) && !gameRunning) Launch();
     }
 
@@ -85,7 +95,6 @@ public class BreakoutBall : MonoBehaviour
         
         // did we hit a Brick
         if (other.gameObject.tag == "Brick") {
-Debug.Log("HIT BRICK!");
             int r = Random.Range(10, 20);
             //GameManager.S.lives -= 1;
             GameManager.S.AddPoint(r);

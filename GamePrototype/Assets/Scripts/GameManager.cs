@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
     public Image heartImage;
     
+	public bool noBrick = false;
 
     public static GameManager S;
     
@@ -30,7 +31,10 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        if (!noBrick && GameObject.FindGameObjectsWithTag("Brick").Length == 0) {
+            noBrick = true;
+            SceneManager.LoadScene("EndScreen");
+}
     }
 
     public void LoseLife() {
@@ -62,3 +66,5 @@ public class GameManager : MonoBehaviour {
 
     }
 }
+
+
