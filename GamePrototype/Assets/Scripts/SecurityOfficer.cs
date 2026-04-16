@@ -47,9 +47,27 @@ void HideMessage() {
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         isTransitioning = false;
+
+        // reset all door sequence state on scene load
+        WalkingInEvent = false;
+        WalkingOutEventDone = false;
+        WalkingInEventStarted = false;
+        gracePeriodActive = false;
+        doorOpen.Stop();
+        doorClose.Stop();
+
+        StartPatrol();
     }
-
-
+    // pauses all settings during scene transition 
+    public void PauseForTransition()
+    {
+        isTransitioning = true;
+        WalkingInEvent = false;
+        WalkingInEventStarted = false;
+        gracePeriodActive = false;
+        doorOpen.Stop();
+        footsteps.Stop();
+    }
 
     void Start()
     {

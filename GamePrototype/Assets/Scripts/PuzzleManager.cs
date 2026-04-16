@@ -69,12 +69,13 @@ public class PuzzleManager : MonoBehaviour
 
     IEnumerator SwitchScenes()
     {
+        // prevents the security guard from interrupting during the transition
+        if (SecurityOfficer.instance != null)
+            SecurityOfficer.instance.PauseForTransition();
+
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("TransitionToGame2");
-
-    
     }
-
 
     IEnumerator ResetPuzzle()
     {
