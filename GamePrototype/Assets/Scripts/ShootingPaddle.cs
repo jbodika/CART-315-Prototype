@@ -30,8 +30,8 @@ public class ShootingPaddle : MonoBehaviour {
         scoreSound.Play();
         
         GameObject go = Instantiate<GameObject>(shot);
-        go.transform.position = shotLocation.transform.position;
-        // go.transform.position = new Vector3(transform.position.x, 
+        go.transform.position = shotLocation.transform.position + new Vector3(0, 0.5f, 0);
+        
         Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
         rb.linearVelocityY = shotSpeed;
     }
