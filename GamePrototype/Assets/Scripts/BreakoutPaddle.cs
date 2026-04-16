@@ -15,20 +15,18 @@ public class BreakoutPaddle : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (Input.GetKey(leftKey)) {
-            if (xPos > leftWall) {
-                xPos -= paddleSpeed;
-            }
-        }
+    void Update()
+    {
+        if (Time.timeScale == 0) return; // paused while hiding
 
-        if (Input.GetKey(rightKey)) {
-            if (xPos < rightWall) {
-                xPos += paddleSpeed;
-            }
+        if (Input.GetKey(leftKey))
+        {
+            if (xPos > leftWall) xPos -= paddleSpeed;
         }
-
+        if (Input.GetKey(rightKey))
+        {
+            if (xPos < rightWall) xPos += paddleSpeed;
+        }
         transform.localPosition = new Vector3(xPos, transform.position.y, 0);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class SecurityOfficer : MonoBehaviour
@@ -22,9 +23,9 @@ public class SecurityOfficer : MonoBehaviour
     private bool gracePeriodActive = false;
 
     private bool isTransitioning = false;
-   
+    private bool isFirstLoad = true;
 
-void HideMessage() { 
+    void HideMessage() { 
     hideMessage.SetActive(false);
 }
     void Awake()
@@ -48,7 +49,6 @@ void HideMessage() {
     {
         isTransitioning = false;
 
-        // reset all door sequence state on scene load
         WalkingInEvent = false;
         WalkingOutEventDone = false;
         WalkingInEventStarted = false;
@@ -56,9 +56,32 @@ void HideMessage() {
         doorOpen.Stop();
         doorClose.Stop();
 
-        StartPatrol();
+        if (!isFirstLoad)
+        {
+            StartPatrol(); // called after the first load has started
+        }
     }
-    // pauses all settings during scene transition 
+
+    void Start()
+    {
+        isFirstLoad = false; // set the first load to false
+        hidingScreen.SetActive(false);
+        storm.Play();
+        hideMessage.SetActive(true);
+        Invoke(nameof(HideMessage), 3.0f);
+
+        // starts footsteps but with a long initial timer
+        footsteps.time = Random.Range(0f, footsteps.clip.length);
+        footsteps.Play();
+        stepsTimer = Random.Range(20f, 30f);
+    }
+
+    void StartPatrol()
+    {
+        footsteps.time = Random.Range(0f, footsteps.clip.length);
+        footsteps.Play();
+        stepsTimer = Random.Range(12f, 18f);
+    }
     public void PauseForTransition()
     {
         isTransitioning = true;
@@ -69,34 +92,16 @@ void HideMessage() {
         footsteps.Stop();
     }
 
-    void Start()
-    {
-        hidingScreen.SetActive(false);
-        StartPatrol();
-		storm.Play();
 
-		hideMessage.SetActive(true); 
-		Invoke(nameof(HideMessage), 3.0f);
-         
-    }
-
-    void StartPatrol()
-    {
-        footsteps.time = Random.Range(0f, footsteps.clip.length);
-        footsteps.Play();
-
-        stepsTimer = Random.Range(12f, 18f);
-
-    }
-    
     void Update()
     {
         if (isTransitioning) return;
+        Time.timeScale = Input.GetKey(KeyCode.H) ? 0f : 1f;
         hidingScreen.SetActive(Input.GetKey(KeyCode.H));
 
         if (gracePeriodActive)
         {
-            graceTimer -= Time.deltaTime;
+            graceTimer -= Time.unscaledDeltaTime; 
             if (graceTimer <= 0)
             {
                 gracePeriodActive = false;
@@ -105,19 +110,18 @@ void HideMessage() {
                     SceneManager.LoadScene("GameOver");
                     return;
                 }
-                WalkingInEventStarted = true; // checks after grace period
+                WalkingInEventStarted = true;
             }
         }
+
         if (WalkingInEventStarted)
         {
-            doorTimer -= Time.deltaTime;
-
-            if (!Input.GetKey(KeyCode.H))  // caught every frame they aren't holding H
+            doorTimer -= Time.unscaledDeltaTime; 
+            if (!Input.GetKey(KeyCode.H))
             {
                 SceneManager.LoadScene("GameOver");
                 return;
             }
-
             if (doorTimer <= 0)
             {
                 WalkingInEventStarted = false;
@@ -129,7 +133,7 @@ void HideMessage() {
 
         if (WalkingOutEventDone)
         {
-            afterDoorCloseTimer -= Time.deltaTime;
+            afterDoorCloseTimer -= Time.unscaledDeltaTime; 
             if (afterDoorCloseTimer <= 0)
             {
                 WalkingOutEventDone = false;
@@ -137,17 +141,16 @@ void HideMessage() {
                 StartPatrol();
             }
         }
-        if (WalkingInEvent) return;
-        
-        stepsTimer -= Time.deltaTime;
 
+        if (WalkingInEvent) return;
+
+        stepsTimer -= Time.unscaledDeltaTime; 
         if (stepsTimer <= 0)
         {
             WalkingInEvent = true;
             footsteps.Stop();
             WalkingIn();
         }
-        
     }
 
 

@@ -11,19 +11,20 @@ public class ShootingPaddle : MonoBehaviour {
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-
-
-scoreSound.volume = 0.1f;
+        scoreSound.volume = 0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Shoot && Input.GetKeyDown(fireButton)) {
+        if (Time.timeScale == 0) return; // paused while hiding
+
+        if (Shoot && Input.GetKeyDown(fireButton))
+        {
             Fire();
         }
     }
-    
+
 
     public void Fire() {
         scoreSound.Play();
