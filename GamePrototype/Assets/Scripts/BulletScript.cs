@@ -3,6 +3,11 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public AudioSource scoreSound, blip;
+
+void Start() {
+scoreSound.volume = 0.1f;
+blip.volume = 0.1f;
+}
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Wall")

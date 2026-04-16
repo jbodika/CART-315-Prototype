@@ -27,6 +27,9 @@ public class BreakoutBall : MonoBehaviour
 		Message.SetActive(true); 
 		Invoke(nameof(HideMessage), 3.0f);
 
+scoreSound.volume = 0.1f;
+blip.volume = 0.1f;
+
         Reset(); 
     }
 
